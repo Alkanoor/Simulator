@@ -2,6 +2,10 @@
 #define PROTOCOL_IN_HPP
 
 
+#include <memory>
+#include <string>
+
+
 class Protocol_In
 {
     public:
@@ -27,7 +31,7 @@ class Protocol_Get : public Protocol_In
 };
 
 
-class Protocol_Action : public Protocol_In<Action>
+class Protocol_Action : public Protocol_In
 {
     public:
         Protocol_Action(const std::string& paquet);

@@ -2,6 +2,9 @@
 #define MAINENGINE_HPP
 
 
+#include <string>
+
+
 class MainEngine
 {
     public:

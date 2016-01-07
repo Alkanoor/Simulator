@@ -13,7 +13,7 @@ EXEC_DEBUG =$(RELEASE_DEBUG_DIR)/Simulator
 
 
 CC = g++
-CFLAGS = -Wall -Werror -O1 -std=c++11
+CFLAGS = -Wall -Werror -O1 -std=c++11 -I./include
 LDFLAGS =
 LDFLAGS_DEBUG = -g
 

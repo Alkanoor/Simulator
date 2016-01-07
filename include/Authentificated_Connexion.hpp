@@ -9,12 +9,12 @@
 class Authentificated_Connexion
 {
     public:
-        Authentificated_Connexion();
+        Authentificated_Connexion(Tcp_Connexion& conn);
 
         void modifyAuthType(unsigned int auth, const std::string& class_);
 
     private:
-        Tcp_Connexion connexion;
+        Tcp_Connexion& connexion;
         Entity_Status status;
         unsigned int id_connexion;
 
