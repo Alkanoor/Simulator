@@ -7,6 +7,8 @@ class AuthEngine
     public:
         AuthEngine();
 
+        std::string check(const std::string& credential);
+
     private:
 };
 

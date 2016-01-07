@@ -3,7 +3,7 @@
 
 unsigned int Tcp_Connexion::numberEntities = 0;
 
-Tcp_Connexion(boost::asio::io_service& io_service) : socket(io_service)
+Tcp_Connexion::Tcp_Connexion(boost::asio::io_service& io_service) : socket(io_service)
 {
     this->id = numberEntities;
     numberEntities++;

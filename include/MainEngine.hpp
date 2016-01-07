@@ -10,9 +10,9 @@ class MainEngine
     public:
         MainEngine();
 
-        std::string computeDiff();
-        std::string computeSituation();
-        void reacts(const std::string& str);
+        std::string computeDiff(const std::string& str);
+        std::string computeSituation(const std::string& str);
+        void reacts(const std::string& str, const std::string& typeAuth);
         void changeType(const std::string& str, unsigned int id);
 
     private:
