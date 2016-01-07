@@ -4,6 +4,21 @@
 Protocol_In::Protocol_In(const std::string& paquet)
 {}
 
+bool Protocol_In::isCorrect() const
+{
+    return true;
+}
+
+int Protocol_In::numberBytesRead() const
+{
+    return 1;
+}
+
+std::string Protocol_In::header() const
+{
+    return "";
+}
+
 Protocol_Get::Protocol_Get(const std::string& paquet) :
     Protocol_In(paquet)
 {}
@@ -61,4 +76,3 @@ std::shared_ptr<Protocol_Action> Protocol_Action::constructFromReceived(const st
 {
     return std::shared_ptr<Protocol_Action>();
 }
-

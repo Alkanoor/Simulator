@@ -14,8 +14,8 @@ EXEC_DEBUG =$(RELEASE_DEBUG_DIR)/Simulator
 
 CC = g++
 CFLAGS = -Wall -Werror -O1 -std=c++11 -I./include
-LDFLAGS =
-LDFLAGS_DEBUG = -g
+LDFLAGS = -lboost_system -lboost_regex
+LDFLAGS_DEBUG = -g -lboost_system -lboost_regex
 
 
 all: createDir $(EXEC)

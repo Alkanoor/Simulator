@@ -2,6 +2,9 @@
 #define AUTH_ENGINE_HPP
 
 
+#include <string>
+
+
 class AuthEngine
 {
     public:

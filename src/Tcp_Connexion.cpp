@@ -11,7 +11,8 @@ Tcp_Connexion::Tcp_Connexion(boost::asio::io_service& io_service) : socket(io_se
 
 Tcp_Connexion::pointer Tcp_Connexion::create(boost::asio::io_service& io_service)
 {
-    return pointer(new Tcp_Connexion(io_service));
+    Tcp_Connexion::pointer ptr(new Tcp_Connexion(io_service));
+    return ptr->getThis();
 }
 
 tcp::socket& Tcp_Connexion::getSocket()
@@ -21,8 +22,6 @@ tcp::socket& Tcp_Connexion::getSocket()
 
 void Tcp_Connexion::start()
 {
-    message = "Voici la reponse : OOOPPP";
-
     boost::asio::async_read(socket, rbuf,
         boost::asio::transfer_at_least(1), boost::bind(&Tcp_Connexion::handle_read, shared_from_this(),
         boost::asio::placeholders::error,
@@ -52,6 +51,11 @@ unsigned int Tcp_Connexion::getId() const
     return id;
 }
 
+Tcp_Connexion::pointer Tcp_Connexion::getThis()
+{
+    return shared_from_this();
+}
+
 void Tcp_Connexion::handle_write(const boost::system::error_code& err, size_t bytesTransferred)
 {
     if(err)
@@ -64,14 +68,14 @@ void Tcp_Connexion::handle_write(const boost::system::error_code& err, size_t by
 
 void Tcp_Connexion::handle_read(const boost::system::error_code& err, size_t bytesTransferred)
 {
-    if(!err)
+    if(!err&&bytesTransferred>0)
     {
         rbuf.commit(bytesTransferred);
 
         std::istream is(&rbuf);
         std::string s;
         is>>s;
-        std::cout<<"Read : "<<s<<std::endl;
+        std::cout<<bytesTransferred<<" Read : "<<s<<std::endl;
         readCallback(s);
 
         boost::asio::async_read(socket, rbuf,

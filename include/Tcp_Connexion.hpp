@@ -12,7 +12,7 @@
 
 using boost::asio::ip::tcp;
 
-class Tcp_Connexion : public boost::enable_shared_from_this<Tcp_Connexion>
+class Tcp_Connexion : public std::enable_shared_from_this<Tcp_Connexion>
 {
     public:
         typedef std::shared_ptr<Tcp_Connexion> pointer;
@@ -26,6 +26,7 @@ class Tcp_Connexion : public boost::enable_shared_from_this<Tcp_Connexion>
         void write(const std::string& message);
 
         unsigned int getId() const;
+        pointer getThis();
 
     private:
         Tcp_Connexion(boost::asio::io_service& io_service);
@@ -34,7 +35,6 @@ class Tcp_Connexion : public boost::enable_shared_from_this<Tcp_Connexion>
         void handle_read(const boost::system::error_code& err, size_t bytesTransferred);
 
         tcp::socket socket;
-        std::string message;
         boost::asio::streambuf rbuf;
 
         std::function<void(const std::string&)> readCallback;

@@ -7,6 +7,8 @@
 #include "MainEngine.hpp"
 #include "AuthEngine.hpp"
 
+#include <iostream>
+
 
 class Server
 {
