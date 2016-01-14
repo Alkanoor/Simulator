@@ -5,7 +5,7 @@
 #include "Object.hpp"
 
 
-class MovableObject : public Object
+class MovableObject : public Object, public Differentializable<MovableObject>
 {
     public:
         MovableObject(bool grantMoving = true);
@@ -13,6 +13,9 @@ class MovableObject : public Object
 
         inline void allowMoving(bool grantMoving = true);
         inline bool canMove() const;
+
+        virtual std::string serialize();
+        std::string differentialize(const MovableObject& newObject);
 
     private:
         bool grantMoving;

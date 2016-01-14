@@ -5,7 +5,7 @@
 #include "MovableObject.hpp"
 
 
-class Robot : public MovableObject
+class Robot : public MovableObject, public Differentializable<Robot>
 {
     public:
         Robot(int team, int size);
@@ -15,6 +15,9 @@ class Robot : public MovableObject
         inline void setSize(int size);
         inline int getTeam() const;
         inline int getSize() const;
+
+        virtual std::string serialize();
+        std::string differentialize(const Robot& newObject);
 
     private:
         int team;
