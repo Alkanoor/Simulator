@@ -12,7 +12,11 @@ class AuthEngine
 
         std::string check(const std::string& credential);
 
+        static std::string defaultAuth();
+        static void setPossibleAuths(const std::vector<std::string>& auths);
+
     private:
+        static std::vector<std::string> possibleAuths;
 };
 
 

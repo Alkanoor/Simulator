@@ -1,4 +1,4 @@
-#include "Server_Read_Orders.hpp"
+#include "Server_Manage_Connexions.hpp"
 
 
 int main()
@@ -6,7 +6,7 @@ int main()
     try
     {
         boost::asio::io_service io_service;
-        Server_Read_Orders physicalServer(io_service);
+        Server_Manage_Connexions physicalServer(io_service);
 
         std::shared_ptr<MainEngine> mainEngine(new MainEngine());
         std::shared_ptr<AuthEngine> authEngine(new AuthEngine());

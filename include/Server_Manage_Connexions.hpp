@@ -1,15 +1,15 @@
-#ifndef SERVER_READ_ORDERS_HPP
-#define SERVER_READ_ORDERS_HPP
+#ifndef SERVER_MANAGE_CONNEXIONS_HPP
+#define SERVER_MANAGE_CONNEXIONS_HPP
 
 
 #include "Tcp_Connexion.hpp"
 #include "Server.hpp"
 
 
-class Server_Read_Orders
+class Server_Manage_Connexions
 {
     public:
-        Server_Read_Orders(boost::asio::io_service& io_service);
+        Server_Manage_Connexions(boost::asio::io_service& io_service);
 
         void setServer(std::shared_ptr<Server> serv);
 

@@ -6,7 +6,7 @@
 #include <map>
 
 
-enum ActionType{GET_DIFF,GET_ALL,ACTION,AUTH,UPDATE_ENTITY,CHANGE_SYN,UNKNOWN};
+enum ActionType{GET_DIFF,GET_ALL,ACTION,AUTH,UPDATE_ENTITY,ORDER_REACTION,UNKNOWN};
 
 namespace ProtocolCutter
 {

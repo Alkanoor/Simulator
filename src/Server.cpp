@@ -14,22 +14,23 @@ void Server::readMessageFrom(const std::string& str, unsigned int id)
     switch(cut.first)
     {
         case GET_DIFF:
-            entities[id].write(engine->computeDiff(cut.second));
+            entities[id].write(engine->computeDiff(cut.second,id));
             break;
         case GET_ALL:
             entities[id].write(engine->computeSituation(cut.second));
             break;
         case ACTION:
-            engine->reacts(cut.second,entities[id].typeAuth());
+            engine->reacts(cut.second,id);
             break;
         case AUTH:
             entities[id].setAuth(authEngine->check(cut.second));
+            engine->updateAuth(id,entities[id].typeAuth());
             break;
         case UPDATE_ENTITY:
             entities[id].update(cut.second);
             break;
-        case CHANGE_SYN:
-            engine->changeType(cut.second,id);
+        case ORDER_REACTION:
+            engine->updateOrderReaction(cut.second,id);
             break;
         default:
             std::cout<<"Break"<<std::endl;
@@ -49,5 +50,6 @@ void Server::addConnexion(std::shared_ptr<Tcp_Connexion> connexion)
 void Server::removeConnexion(unsigned int idConnexion)
 {
     std::cout<<"On rerase "<<idConnexion<<std::endl;
+    engine->removeId(idConnexion);
     entities.erase(idConnexion);
 }
