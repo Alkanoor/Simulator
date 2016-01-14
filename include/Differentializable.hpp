@@ -6,7 +6,7 @@ template <typename T>
 class Differentializable
 {
     public:
-        virtual std::string differentialize(std::shared_ptr<T> newObject) = 0;
+        virtual std::string differentialize(const T& newObject) = 0;
 };
 
 

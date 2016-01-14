@@ -9,11 +9,11 @@ class Situation : public Serializable, public Differentializable<Situation>
 {
     public:
         void addElement(std::shared_ptr<Object> obstacle);
-        void addElement(std::shared_ptr<MovableObject> movalbeObject);
+        void addElement(std::shared_ptr<MovableObject> movableObject);
         void addElement(std::shared_ptr<Robot> robot);
 
         std::string serialize();
-        std::string differentialize(std::shared_ptr<Situation> newSituation);
+        std::string differentialize(const Situation& newSituation);
 
     private:
         std::vector<std::shared_ptr<Object> > obstacles;
