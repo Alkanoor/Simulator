@@ -19,10 +19,14 @@ class Entity_Status
         std::string typeAuth() const;
         std::string getName() const;
 
+        ORDER_REACTION_TYPE getIndividualReaction();
+
     private:
         std::shared_ptr<Tcp_Connexion> connexion;
         std::string authType;
         std::string name;
+
+        std::map<unsigned int, ORDER_REACTION_TYPE> reactionsToOrders;
 };
 
 

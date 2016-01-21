@@ -7,18 +7,25 @@ MainEngine::MainEngine()
 std::string MainEngine::computeDiff(const std::string& str, unsigned int id)
 {
     if(!situations.count(id))
-        situations[id] = SituationDifferential();
+    {
+        situations[id] = currentSituation;
+        mutexForSituationChange.lock();
+        std::string toReturn = currentSituation.serialize();
+        mutexForSituationChange.unlock();
+        return toReturn;
+    }
 
     mutexForSituationChange.lock();
-    std::string toReturn = situations[id].serialize(currentSituation);
+    std::string toReturn = situations[id].differentialize(currentSituation);
     mutexForSituationChange.unlock();
     return toReturn;
 }
 
-std::string MainEngine::computeSituation(const std::string& str) const
+std::string MainEngine::computeSituation(const std::string& str)
 {
     mutexForSituationChange.lock();
     std::string toReturn = currentSituation.serialize();
+    situations[id] = currentSituation;
     mutexForSituationChange.unlock();
     return toReturn;
 }

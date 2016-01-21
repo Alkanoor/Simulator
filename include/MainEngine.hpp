@@ -13,7 +13,7 @@ class MainEngine
         MainEngine();
 
         std::string computeDiff(const std::string& str, unsigned int id);
-        std::string computeSituation(const std::string& str) const;
+        std::string computeSituation(const std::string& str);
         void reacts(const std::string& str, unsigned int id);
         void updateAuth(unsigned int id, const std::string& auth);
         void updateOrderReaction(const std::string& str, unsigned int id);
@@ -26,7 +26,7 @@ class MainEngine
     private:
         std::mutex mutexForSituationChange;
         Situation currentSituation;
-        std::map<unsigned int, SituationWithDifferential> situations;
+        std::map<unsigned int, Situation> previousSituations;
 
         std::map<std::string, std::priority_queue<Order> > ordersToTreat;
         std::map<std::string, OrderPolicy> policiesForAccessRights;

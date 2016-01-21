@@ -1,22 +1,22 @@
-#include "../include/Simulation.hpp"
+#include "../include/Situation.hpp"
 
 
-void Simulation::addElement(std::shared_ptr<Object> obstacle)
+void Situation::addElement(std::shared_ptr<Object> obstacle)
 {
     obstacles.push_back(obstacle);
 }
 
-void Simulation::addElement(std::shared_ptr<MovableObject> movableObject)
+void Situation::addElement(std::shared_ptr<MovableObject> movableObject)
 {
     movableObjects.push_back(movableObject);
 }
 
-void Simulation::addElement(std::shared_ptr<Robot> robot)
+void Situation::addElement(std::shared_ptr<Robot> robot)
 {
     robots.push_back(robot);
 }
 
-std::string Simulation::serialize()
+std::string Situation::serialize()
 {
     std::stringstream converter;
     converter<<"si[";
@@ -46,7 +46,7 @@ std::string Simulation::serialize()
     return converter.str();
 }
 
-std::string Simulation::differentialize(const Situation& newSituation)
+std::string Situation::differentialize(const Situation& newSituation)
 {
     std::stringstream converter;
     converter<<"si_d";
