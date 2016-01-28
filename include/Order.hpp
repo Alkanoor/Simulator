@@ -7,6 +7,8 @@ class Order
     public:
     private:
         unsigned int idEmitter;
+        unsigned int emissionDate;
+        ORDER_REACTION_TYPE status;
 };
 
 
